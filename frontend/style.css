@@ -1,0 +1,16 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+.errorMessage {
+    color: red;
+    font-weight: bold;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: gray;
+}

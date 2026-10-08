@@ -28,23 +28,19 @@ public class TaskService {
     }
 
     @Transactional
-    public Task create(Task task) {
-        if (task.getTitle() != null && !task.getTitle().isBlank()) {
-            task.setCompleted(false);
-            taskRepository.save(task);
-            return task;
-        } else {
-            throw new IllegalArgumentException("Invalid arguments");
-        }
+    public Task create(String title) {
+        Task task = new Task();
+        task.setTitle(title);
+        task.setCompleted(false);
+        taskRepository.save(task);
+        return task;
     }
 
     @Transactional
-    public Task updateById(Long id, Task task) {
+    public Task updateById(Long id, String title, boolean completed) {
         Task updatedTask = findById(id);
-        if (task.getTitle() != null) {
-            updatedTask.setTitle(task.getTitle());
-        }
-        updatedTask.setCompleted(task.isCompleted());
+        updatedTask.setTitle(title);
+        updatedTask.setCompleted(completed);
         taskRepository.save(updatedTask);
         return updatedTask;
     }
